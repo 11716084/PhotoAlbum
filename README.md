@@ -1,5 +1,5 @@
-# PhotoAlbum
-Django and S3 Buckets
+# PhotoAlbum-app
+A photo album website with **Django** and Images on AWS S3 Buckets
 ![](Images/strona_1.png)
 ![](Images/strona_2.png)
 ![](Images/strona_3.png)
