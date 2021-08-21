@@ -22,7 +22,9 @@
         <row>
             <div class="row">
                 <div class="col-md-3">
-
+                    {% if request.user.is_authenticated %}
+                        <p>Hello {{request.user}}</p>
+                    {% endif %}
                     <div class="card">
                         <div class="card-header">
                             Kategorie
@@ -40,7 +42,10 @@
 
 
                             <a href="{% url 'add' %}" class="btn btn-dark btn-block btn-sm m-1">Dodaj Zdjęcie</a>
-                            </li>
+                            <a href="{% url 'logout' %}" class="btn btn-dark btn-block btn-sm m-1">Wyloguj</a>
+                            
+                        
+                     
                         </ul>
                       </div>
                       

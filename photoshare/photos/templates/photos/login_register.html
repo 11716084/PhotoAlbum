@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaloguj/Utwórz konto</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+
+    <style>
+        .login--wrapper{
+            display: flex;
+            height: 80vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .form{
+            width: 600px;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container">
+
+        <div class="login--wrapper">
+
+
+            {% if page == 'login' %}
+            <form method='post' class="form">
+                {% csrf_token %}
+                <h1>Zaloguj</h1>
+                <h4>Zaloguj żeby zobaczyć zdjęcia. Share with friends...</h4>
+                <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Login</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Hasło</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <p>Jeśli nie masz konta <a href="{% url 'register' %}">Utwórz konto</a></p>
+            </form>
+            {% else %}
+                <form method='post'>
+                    <h1>Utwórz konto</h1>
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">{{field.label}}</label>
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <p>Posiadasz konto <a href="{% url 'login' %}">Zaloguj</a></p>
+                </form>>
+
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
